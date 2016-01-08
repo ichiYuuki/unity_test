@@ -29,9 +29,9 @@ public class Player : MonoBehaviour {
 			transform.localScale = temp;
 			anim.SetBool ("Dash",true);
 
-			if(transform.position.x > mainCamera.transform.position.x -4){
+			if(transform.position.x > mainCamera.transform.position.x -3){
 				Vector3 cameraPos = mainCamera.transform.position;
-				cameraPos.x = transform.position.x + 4;
+				cameraPos.x = transform.position.x + 0;
 				mainCamera.transform.position = cameraPos;
 			}
 			Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
