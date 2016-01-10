@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
 		//Linecastでユニティちゃんの足元に地面があるか判定
 		isGrounded = Physics2D.Linecast (
 			transform.position + transform.up * 1,
-			transform.position - transform.up * 0.05f,
+			transform.position - transform.up * 0.07f,
 			groundLayer);
 		//スペースキーを押し、
 		if (Input.GetKeyDown ("space")) {
