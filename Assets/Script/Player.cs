@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 	public float jumpPower = 700; //ジャンプ力
 	public LayerMask groundLayer; //Linecastで判定するLayer
 
+	public GameObject bullet;
+
 	public GameObject mainCamera;
 	private Rigidbody2D rigidbody2D;
 	private Animator anim;
@@ -47,6 +49,11 @@ public class Player : MonoBehaviour {
 		//結果をアニメータービューの変数へ反映する
 		anim.SetBool("isJumping",isJumping);
 		anim.SetBool("isFalling",isFalling);
+
+		if (Input.GetKeyDown ("left ctrl")) {
+			anim.SetTrigger ("Shot");
+			Instantiate (bullet,transform.position + new Vector3(0f,1.2f,0f),transform.rotation);
+		}
 	}
 	
 	void FixedUpdate ()
