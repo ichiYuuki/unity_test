@@ -3,21 +3,20 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 	public float speed = 4f;
-
 	public float jumpPower = 700; //ジャンプ力
 	public LayerMask groundLayer; //Linecastで判定するLayer
-
+	public GameObject mainCamera;
 	public GameObject bullet;
 
-	public GameObject mainCamera;
 	private Rigidbody2D rigidbody2D;
 	private Animator anim;
-
 	private bool isGrounded; //着地判定
-	
+	private Renderer renderer;
+
 	void Start () {
 		anim = GetComponent<Animator>();
 		rigidbody2D = GetComponent<Rigidbody2D>();
+		renderer = GetComponent<Renderer>();  
 	}
 
 	void Update ()
@@ -79,5 +78,24 @@ public class Player : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (0, rigidbody2D.velocity.y);
 			anim.SetBool ("Dash", false);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "Enemy") {
+			StartCoroutine ("Damage");
+		}
+	}
+
+	IEnumerator Damage(){
+		gameObject.layer = LayerMask.NameToLayer ("PlayerDamage");
+		int count = 10;
+		while (count > 0) {
+			renderer.material.color = new Color(1,1,1,0);
+			yield return new WaitForSeconds(0.05f);
+			renderer.material.color = new Color(1,1,1,1);
+			yield return new WaitForSeconds	(0.05f);
+			count--;
+		}
+		gameObject.layer = LayerMask.NameToLayer("Player");
 	}
 }
