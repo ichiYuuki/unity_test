@@ -4,8 +4,9 @@ using System.Collections;
 public class Enemy1Script : MonoBehaviour {
 	Rigidbody2D rigidbody2D;
 	public int speed = -3;
-
 	public GameObject explosion;
+	public int attacPoint = 10;
+	public LifeScript lifeScript;
 
 	void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D> ();
@@ -22,4 +23,10 @@ public class Enemy1Script : MonoBehaviour {
 			Instantiate(explosion, transform.position, transform.rotation);
 		}
 	}
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "UnityChan") {
+			lifeScript.LifeDown(attacPoint);
+		}
+	}
+
 }
