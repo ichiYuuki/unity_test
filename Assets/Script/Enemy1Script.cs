@@ -5,11 +5,13 @@ public class Enemy1Script : MonoBehaviour {
 	Rigidbody2D rigidbody2D;
 	public int speed = -3;
 	public GameObject explosion;
+	public GameObject item;
 	public int attacPoint = 10;
-	public LifeScript lifeScript;
+	private LifeScript lifeScript;
 
 	void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D> ();
+		lifeScript = GameObject.FindGameObjectWithTag ("HP").GetComponent<LifeScript> ();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,10 @@ public class Enemy1Script : MonoBehaviour {
 		if (col.tag == "Bullet") {
 			Destroy(gameObject);
 			Instantiate(explosion, transform.position, transform.rotation);
+
+			if(Random.Range (0,4) == 0){
+				Instantiate(item,transform.position,transform.rotation);
+			}
 		}
 	}
 	void OnCollisionEnter2D(Collision2D col){

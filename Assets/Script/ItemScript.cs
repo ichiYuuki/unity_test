@@ -2,8 +2,14 @@
 using System.Collections;
 
 public class ItemScript : MonoBehaviour {
+
 	public int healPoint = 20;
-	public LifeScript lifeScript;
+	private LifeScript lifeScript;
+
+	void Start () {
+		lifeScript = GameObject.FindGameObjectWithTag ("HP").GetComponent<LifeScript> ();
+	}
+
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "UnityChan") {
 			lifeScript.LifeUp(healPoint);
@@ -11,10 +17,7 @@ public class ItemScript : MonoBehaviour {
 		}
 	}
 
-	void Start () {
-	
-	}
-	
+
 	// Update is called once per frame
 	void Update () {
 	
