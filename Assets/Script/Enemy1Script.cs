@@ -8,7 +8,8 @@ public class Enemy1Script : MonoBehaviour {
 	public GameObject item;
 	public int attacPoint = 10;
 	private LifeScript lifeScript;
-
+	private const string MAIN_CAMERA_TAG_NAME = "MainCamera";
+	private bool _isRendered = false;
 	void Start () {
 		rigidbody2D = GetComponent<Rigidbody2D> ();
 		lifeScript = GameObject.FindGameObjectWithTag ("HP").GetComponent<LifeScript> ();
@@ -16,16 +17,20 @@ public class Enemy1Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
+		if (_isRendered) {
+			rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag == "Bullet") {
-			Destroy(gameObject);
-			Instantiate(explosion, transform.position, transform.rotation);
+		if (_isRendered) {
+			if (col.tag == "Bullet") {
+				Destroy (gameObject);
+				Instantiate (explosion, transform.position, transform.rotation);
 
-			if(Random.Range (0,4) == 0){
-				Instantiate(item,transform.position,transform.rotation);
+				if (Random.Range (0, 4) == 0) {
+					Instantiate (item, transform.position, transform.rotation);
+				}
 			}
 		}
 	}
@@ -34,5 +39,9 @@ public class Enemy1Script : MonoBehaviour {
 			lifeScript.LifeDown(attacPoint);
 		}
 	}
-
+	void OnWillRenderObject(){
+		if (Camera.current.tag == MAIN_CAMERA_TAG_NAME) {
+			_isRendered = true;
+		}
+	}
 }
