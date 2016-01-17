@@ -7,18 +7,18 @@ public class Player : MonoBehaviour {
 	public LayerMask groundLayer; //Linecastで判定するLayer
 	public GameObject mainCamera;
 	public GameObject bullet;
-
+	
 	private Rigidbody2D rigidbody2D;
 	private Animator anim;
 	private bool isGrounded; //着地判定
 	private Renderer renderer;
-
+	
 	void Start () {
 		anim = GetComponent<Animator>();
 		rigidbody2D = GetComponent<Rigidbody2D>();
 		renderer = GetComponent<Renderer>();  
 	}
-
+	
 	void Update ()
 	{
 		//Linecastでユニティちゃんの足元に地面があるか判定
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 		//結果をアニメータービューの変数へ反映する
 		anim.SetBool("isJumping",isJumping);
 		anim.SetBool("isFalling",isFalling);
-
+		
 		if (Input.GetKeyDown ("left ctrl")) {
 			anim.SetTrigger ("Shot");
 			Instantiate (bullet,transform.position + new Vector3(0f,1.2f,0f),transform.rotation);
@@ -79,13 +79,13 @@ public class Player : MonoBehaviour {
 			anim.SetBool ("Dash", false);
 		}
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Enemy") {
 			StartCoroutine ("Damage");
 		}
 	}
-
+	
 	IEnumerator Damage(){
 		gameObject.layer = LayerMask.NameToLayer ("PlayerDamage");
 		int count = 10;
