@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 		anim.SetBool("isJumping",isJumping);
 		anim.SetBool("isFalling",isFalling);
 		
-		if (Input.GetKeyDown ("left ctrl")) {
+		if (Input.GetKeyDown ("z")) {
 			anim.SetTrigger ("Shot");
 			Instantiate (bullet,transform.position + new Vector3(0f,1.2f,0f),transform.rotation);
 		}
