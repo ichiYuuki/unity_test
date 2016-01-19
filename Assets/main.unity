@@ -668,6 +668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d91ab57a2cc3324cab65a1e62b5e30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnityChan: {fileID: 1010447224}
+  explosion: {fileID: 167322, guid: adf695d5734141f438255228200b2ef1, type: 2}
+  gameOverText: {fileID: 1940822693}
 --- !u!4 &248030503 stripped
 Transform:
   m_PrefabParentObject: {fileID: 432538, guid: 3bfda2c19cc647a4d9595a1da43e1566, type: 2}
@@ -1191,6 +1194,7 @@ RectTransform:
   - {fileID: 1590285092}
   - {fileID: 244175012}
   - {fileID: 1940822692}
+  - {fileID: 814827278}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
@@ -1664,6 +1668,94 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13674f6a87ae02749af93782d25731d0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &814827277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 814827278}
+  - 222: {fileID: 814827280}
+  - 114: {fileID: 814827279}
+  - 114: {fileID: 814827281}
+  m_Layer: 5
+  m_Name: GameClear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &814827278
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814827277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 395423945}
+  m_RootOrder: 3
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &814827279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814827277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.87836176, g: 0.9264706, b: 0.054498266, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f34006159d57d3b449fd9277723e089f, type: 3}
+    m_FontSize: 140
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 140
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: GAME CLEAR
+--- !u!222 &814827280
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814827277}
+--- !u!114 &814827281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814827277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!4 &823079895 stripped
 Transform:
   m_PrefabParentObject: {fileID: 432538, guid: 3bfda2c19cc647a4d9595a1da43e1566, type: 2}
@@ -2149,6 +2241,7 @@ MonoBehaviour:
     m_Bits: 256
   mainCamera: {fileID: 313607874}
   bullet: {fileID: 157300, guid: aafb170ce2efaaf43a5e2928b4496c1d, type: 2}
+  lifescript: {fileID: 244175015}
 --- !u!1001 &1012616703
 Prefab:
   m_ObjectHideFlags: 0
@@ -3637,6 +3730,7 @@ GameObject:
   - 224: {fileID: 1940822692}
   - 222: {fileID: 1940822694}
   - 114: {fileID: 1940822693}
+  - 114: {fileID: 1940822695}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -3673,7 +3767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.9632353, g: 0.0141652385, b: 0.0141652385, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3691,7 +3785,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: GAME OVER
 --- !u!222 &1940822694
@@ -3700,6 +3794,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1940822691}
+--- !u!114 &1940822695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1940822691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1943558516
 Prefab:
   m_ObjectHideFlags: 0
