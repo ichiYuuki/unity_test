@@ -21,7 +21,7 @@ public class Enemy1Script : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (speed, rigidbody2D.velocity.y);
 		}
 		if(gameObject.transform.position.y < Camera.main.transform.position.y - 8 ||
-		   gameObject.transform.position.x < Camera.main.transform.position.x - 10){
+		   gameObject.transform.position.x < Camera.main.transform.position.x - 15){
 			Destroy(gameObject);
 		}
 	}
